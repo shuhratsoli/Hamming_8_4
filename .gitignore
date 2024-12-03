@@ -1,4 +1,5 @@
 ./build
+/build/
 Hamming_8_4.o
 Hamming_8_4.exe
 main.o
