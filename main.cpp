@@ -104,7 +104,8 @@ int main() {
                     std::cout << "Введите в каком элементе вектора, вы хотите инвертировать бит (целое число от 1 до " << encodedBytes.size() << "): ";
                     std::cin >> itemNumber;
                 }
-                itemNumber = 1;
+				else
+					itemNumber = 1;
                 std::cout << "Введите в каком бите элемента, вы хотите инвертировать бит (целое число от 1 до 8): ";
                 std::cin >> byteNumber;
 
@@ -112,11 +113,11 @@ int main() {
                     int itemIndex = itemNumber - 1;
                     int bitPosition = byteNumber - 1;
 
-                    encodedBytes[itemIndex] ^= (1 << bitPosition);
-
                     std::cout << "Бит успешно инвертирован:" << std::endl;
 
                     for (uint8_t byte: encodedBytes) {
+                        if (index + 1 == itemIndex)
+                            byte ^= (1 << bitPosition);
                         std::cout << ++index << ". " << std::bitset<8>(byte) << std::endl;
                     }
                     index = 0;
