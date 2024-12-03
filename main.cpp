@@ -8,7 +8,7 @@ std::vector<uint8_t> MakeVector(unsigned long long number) {
     std::string input = std::bitset<64>(number).to_string();
     input.erase(0, input.find_first_not_of('0'));
 
-    std::cout << "×èñëî " << number << " â äâîè÷íîì ïðåäñòàâëåíèå: " << input << std::endl;
+    std::cout << "Ð§Ð¸ÑÐ»Ð¾ " << number << " Ð² Ð´Ð²Ð¾Ð¸Ñ‡Ð½Ð¾Ð¼ Ð¿Ñ€ÐµÐ´ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ: " << input << std::endl;
 
     std::vector<uint8_t> bytes;
     while (input.size() % 4 != 0) {
@@ -17,7 +17,7 @@ std::vector<uint8_t> MakeVector(unsigned long long number) {
 
     int index = 0;
 
-    std::cout << "×èñëî " << number << " áûëà ðàçäåëåíà íà " << input.size() / 4 << " áëîêîâ èç 4 áèòîâûõ çíà÷åíèé:" << std::endl;
+    std::cout << "Ð§Ð¸ÑÐ»Ð¾ " << number << " Ð±Ñ‹Ð»Ð° Ñ€Ð°Ð·Ð´ÐµÐ»ÐµÐ½Ð° Ð½Ð° " << input.size() / 4 << " Ð±Ð»Ð¾ÐºÐ¾Ð² Ð¸Ð· 4 Ð±Ð¸Ñ‚Ð¾Ð²Ñ‹Ñ… Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð¹:" << std::endl;
 
     for (size_t i = 0; i < input.size(); i += 4) {
         std::string temp = input.substr(i, 4);
@@ -31,20 +31,20 @@ std::vector<uint8_t> MakeVector(unsigned long long number) {
 
 void ShowCommands()
 {
-    std::cout << "Ñïèñîê êîìàíä" << std::endl;
-    std::cout << " 1. Ñîñòàâèòü âåêòîð." << std::endl;
-    std::cout << " 2. Êîäèðîâàíèå." << std::endl;
-    std::cout << " 3. Äåêîäèðîâàíèå." << std::endl;
-    std::cout << " 4. Èíâåðòèðîâàòü áèò â êîäèðîâàííîì âåêòîðå." << std::endl;
-    std::cout << " 5. Ââåñòè íîâîå çíà÷åíèå." << std::endl;
-    std::cout << " 6. Âûõîä." << std::endl;
+    std::cout << "Ð¡Ð¿Ð¸ÑÐ¾Ðº ÐºÐ¾Ð¼Ð°Ð½Ð´" << std::endl;
+    std::cout << " 1. Ð¡Ð¾ÑÑ‚Ð°Ð²Ð¸Ñ‚ÑŒ Ð²ÐµÐºÑ‚Ð¾Ñ€." << std::endl;
+    std::cout << " 2. ÐšÐ¾Ð´Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ." << std::endl;
+    std::cout << " 3. Ð”ÐµÐºÐ¾Ð´Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ." << std::endl;
+    std::cout << " 4. Ð˜Ð½Ð²ÐµÑ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð±Ð¸Ñ‚ Ð² ÐºÐ¾Ð´Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ð¾Ð¼ Ð²ÐµÐºÑ‚Ð¾Ñ€Ðµ." << std::endl;
+    std::cout << " 5. Ð’Ð²ÐµÑÑ‚Ð¸ Ð½Ð¾Ð²Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ." << std::endl;
+    std::cout << " 6. Ð’Ñ‹Ñ…Ð¾Ð´." << std::endl;
 }
 
 int main() {
     setlocale(LC_ALL, "");
 
     unsigned long long number;
-    std::cout << "Ââåäèòå öåëîå ÷èñëî, íå ïðåâîñõîäÿùåå 2^64-1: ";
+    std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ†ÐµÐ»Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾, Ð½Ðµ Ð¿Ñ€ÐµÐ²Ð¾ÑÑ…Ð¾Ð´ÑÑ‰ÐµÐµ 2^64-1: ";
     std::cin >> number;
     std::vector<uint8_t> bytes, encodedBytes, decodedBytes;
     bool vectorMaked = false, encoded = false;
@@ -53,7 +53,7 @@ int main() {
 
     while(true) {
         int command, index = 0;
-        std::cout << "Âûáåðèòå êîìàíäó: ";
+        std::cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñƒ: ";
         std::cin >> command;
 
         if (command == 1) {
@@ -65,7 +65,7 @@ int main() {
         else if (command == 2) {
             if (vectorMaked) {
                 encodedBytes = Hamming_8_4::Encode(bytes);
-                std::cout << "×èñëî " << number << " ïîñëå êîäèðîâàíèÿ: " << std::endl;
+                std::cout << "Ð§Ð¸ÑÐ»Ð¾ " << number << " Ð¿Ð¾ÑÐ»Ðµ ÐºÐ¾Ð´Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ: " << std::endl;
                 for (uint8_t byte: encodedBytes) {
                     std::cout << ++index << ". " << std::bitset<8>(byte) << std::endl;
                 }
@@ -73,7 +73,7 @@ int main() {
                 index = 0;
             }
             else {
-                std::cout << "Âåêòîð 4 áèòîâûõ çíà÷åíèé íå áûëà ñîñòàâëåíà, ïîæàëóéñòà, ñíà÷àëà ñîñòàâüòå âåêòîð.";
+                std::cout << "Ð’ÐµÐºÑ‚Ð¾Ñ€ 4 Ð±Ð¸Ñ‚Ð¾Ð²Ñ‹Ñ… Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð¹ Ð½Ðµ Ð±Ñ‹Ð»Ð° ÑÐ¾ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð°, Ð¿Ð¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, ÑÐ½Ð°Ñ‡Ð°Ð»Ð° ÑÐ¾ÑÑ‚Ð°Ð²ÑŒÑ‚Ðµ Ð²ÐµÐºÑ‚Ð¾Ñ€.";
             }
             std::cout << std::endl;
             ShowCommands();
@@ -82,17 +82,17 @@ int main() {
             if (encoded) {
                 decodedBytes = Hamming_8_4::Decode(encodedBytes);
                 if (decodedBytes.size() > 0) {
-                    std::cout << "Äâîè÷íûé ðåçóëüòàòü äåêîäèðîâàíèÿ: " << std::endl;
+                    std::cout << "Ð”Ð²Ð¾Ð¸Ñ‡Ð½Ñ‹Ð¹ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ÑŒ Ð´ÐµÐºÐ¾Ð´Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ: " << std::endl;
                     for (uint8_t byte: decodedBytes) {
                         std::cout << std::bitset<4>(byte);
                     }
                 }
                 else {
-                    std::cout << "Äàííûå íå ïîäëåæàòü èñïðàâëåíèþ." << std::endl;
+                    std::cout << "Ð”Ð°Ð½Ð½Ñ‹Ðµ Ð½Ðµ Ð¿Ð¾Ð´Ð»ÐµÐ¶Ð°Ñ‚ÑŒ Ð¸ÑÐ¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸ÑŽ." << std::endl;
                 }
             }
             else {
-                std::cout << "Âåêòîð 4 áèòîâûõ çíà÷åíèé íå áûëà êîäèðîâàíà, ïîæàëóéñòà, ñíà÷àëà êîäèðóéòå âåêòîð.";
+                std::cout << "Ð’ÐµÐºÑ‚Ð¾Ñ€ 4 Ð±Ð¸Ñ‚Ð¾Ð²Ñ‹Ñ… Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð¹ Ð½Ðµ Ð±Ñ‹Ð»Ð° ÐºÐ¾Ð´Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð°, Ð¿Ð¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, ÑÐ½Ð°Ñ‡Ð°Ð»Ð° ÐºÐ¾Ð´Ð¸Ñ€ÑƒÐ¹Ñ‚Ðµ Ð²ÐµÐºÑ‚Ð¾Ñ€.";
             }
             std::cout << std::endl;
             ShowCommands();
@@ -101,11 +101,11 @@ int main() {
             if (encoded) {
                 int itemNumber, byteNumber;
                 if (encodedBytes.size() > 1){
-                    std::cout << "Ââåäèòå â êàêîì ýëåìåíòå âåêòîðà, âû õîòèòå èíâåðòèðîâàòü áèò (öåëîå ÷èñëî îò 1 äî " << encodedBytes.size() << "): ";
+                    std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð² ÐºÐ°ÐºÐ¾Ð¼ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ðµ Ð²ÐµÐºÑ‚Ð¾Ñ€Ð°, Ð²Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¸Ð½Ð²ÐµÑ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð±Ð¸Ñ‚ (Ñ†ÐµÐ»Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾ Ð¾Ñ‚ 1 Ð´Ð¾ " << encodedBytes.size() << "): ";
                     std::cin >> itemNumber;
                 }
                 itemNumber = 1;
-                std::cout << "Ââåäèòå â êàêîì áèòå ýëåìåíòà, âû õîòèòå èíâåðòèðîâàòü áèò (öåëîå ÷èñëî îò 1 äî 8): ";
+                std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð² ÐºÐ°ÐºÐ¾Ð¼ Ð±Ð¸Ñ‚Ðµ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°, Ð²Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¸Ð½Ð²ÐµÑ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð±Ð¸Ñ‚ (Ñ†ÐµÐ»Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾ Ð¾Ñ‚ 1 Ð´Ð¾ 8): ";
                 std::cin >> byteNumber;
 
                 if (byteNumber >= 1 && byteNumber <= 8) {
@@ -114,7 +114,7 @@ int main() {
 
                     encodedBytes[itemIndex] ^= (1 << bitPosition);
 
-                    std::cout << "Áèò óñïåøíî èíâåðòèðîâàí:" << std::endl;
+                    std::cout << "Ð‘Ð¸Ñ‚ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð¸Ð½Ð²ÐµÑ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½:" << std::endl;
 
                     for (uint8_t byte: encodedBytes) {
                         std::cout << ++index << ". " << std::bitset<8>(byte) << std::endl;
@@ -122,28 +122,28 @@ int main() {
                     index = 0;
                 }
                 else {
-                    std::cout << "Îøèáêà: Íîìåð áèòà äîëæåí áûòü îò 1 äî 8." << std::endl;
+                    std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ°: ÐÐ¾Ð¼ÐµÑ€ Ð±Ð¸Ñ‚Ð° Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð±Ñ‹Ñ‚ÑŒ Ð¾Ñ‚ 1 Ð´Ð¾ 8." << std::endl;
                 }
             }
             else {
-                std::cout << "Âåêòîð 4 áèòîâûõ çíà÷åíèé íå áûëà êîäèðîâàíà, ïîæàëóéñòà, ñíà÷àëà êîäèðóéòå âåêòîð.";
+                std::cout << "Ð’ÐµÐºÑ‚Ð¾Ñ€ 4 Ð±Ð¸Ñ‚Ð¾Ð²Ñ‹Ñ… Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð¹ Ð½Ðµ Ð±Ñ‹Ð»Ð° ÐºÐ¾Ð´Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð°, Ð¿Ð¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, ÑÐ½Ð°Ñ‡Ð°Ð»Ð° ÐºÐ¾Ð´Ð¸Ñ€ÑƒÐ¹Ñ‚Ðµ Ð²ÐµÐºÑ‚Ð¾Ñ€.";
             }
             std::cout << std::endl;
             ShowCommands();
         }
         else if (command == 5) {
-            std::cout << "Ââåäèòå öåëîå ÷èñëî, íå ïðåâîñõîäÿùåå 2^64-1: ";
+            std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ†ÐµÐ»Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾, Ð½Ðµ Ð¿Ñ€ÐµÐ²Ð¾ÑÑ…Ð¾Ð´ÑÑ‰ÐµÐµ 2^64-1: ";
             std::cin >> number;
             vectorMaked = encoded = false;
             std::cout << std::endl;
             ShowCommands();
         }
         else if (command == 6) {
-            std::cout << "Êîíåö ðàáîòû ïðîãðàììû..." << std::endl;
+            std::cout << "ÐšÐ¾Ð½ÐµÑ† Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ñ‹..." << std::endl;
             return 0;
         }
         else {
-            std::cout << "Êîìàíäà ïîä òàêèì íîìåðîì íå ñóùåñòâóåò." << std::endl;
+            std::cout << "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð° Ð¿Ð¾Ð´ Ñ‚Ð°ÐºÐ¸Ð¼ Ð½Ð¾Ð¼ÐµÑ€Ð¾Ð¼ Ð½Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚." << std::endl;
             ShowCommands();
         }
     }

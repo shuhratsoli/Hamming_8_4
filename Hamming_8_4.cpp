@@ -32,7 +32,7 @@ namespace Hamming_8_4
 
     std::vector<uint8_t> Encode(const std::vector<uint8_t> bytes) {
         std::vector<uint8_t> resBytes;
-        std::cout << "Кодирование..." << std::endl;
+        std::cout << "РљРѕРґРёСЂРѕРІР°РЅРёРµ..." << std::endl;
         for (uint8_t byte : bytes) {
             uint8_t resByte = EncodeHelper(byte);
             std::cout << std::bitset<4>(byte) << " -> " << std::bitset<8>(resByte) << std::endl;
@@ -63,24 +63,24 @@ namespace Hamming_8_4
         int temp = !A + !B * 2 + !C * 4 + !D * 8;
 
         if (temp > 0)
-            std::cout << "В " << byteNum << " -ом байте была исправлена ошибка в ";
+            std::cout << "Р’ " << byteNum << " -РѕРј Р±Р°Р№С‚Рµ Р±С‹Р»Р° РёСЃРїСЂР°РІР»РµРЅР° РѕС€РёР±РєР° РІ ";
 
         switch (temp) {
         case 15:
             d1 ^= 1;
-            std::cout << "7-ом бите." << std::endl;
+            std::cout << "7-РѕРј Р±РёС‚Рµ." << std::endl;
             break;
         case 14:
             d2 ^= 1;
-            std::cout << "5-ом бите." << std::endl;
+            std::cout << "5-РѕРј Р±РёС‚Рµ." << std::endl;
             break;
         case 13:
             d3 ^= 1;
-            std::cout << "3-ом бите." << std::endl;
+            std::cout << "3-РѕРј Р±РёС‚Рµ." << std::endl;
             break;
         case 11:
             d4 ^= 1;
-            std::cout << "1-ом бите." << std::endl;
+            std::cout << "1-РѕРј Р±РёС‚Рµ." << std::endl;
             break;
         }
 
@@ -90,11 +90,11 @@ namespace Hamming_8_4
     std::vector<uint8_t> Decode(const std::vector<uint8_t> bytes) {
         int index = 1;
         std::vector<uint8_t> resBytes;
-        std::cout << "Декодирование..." << std::endl;
+        std::cout << "Р”РµРєРѕРґРёСЂРѕРІР°РЅРёРµ..." << std::endl;
         for (uint8_t byte : bytes) {
             uint8_t res = DecodeHelper(byte, index);
             if (res == 0b10000000) {
-                std::cout << index << ". " << std::bitset<8>(byte) << " -> Двойная ошибка." << std::endl;
+                std::cout << index << ". " << std::bitset<8>(byte) << " -> Р”РІРѕР№РЅР°СЏ РѕС€РёР±РєР°." << std::endl;
                 return std::vector<uint8_t>();
             }
             else
