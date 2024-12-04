@@ -63,26 +63,9 @@ namespace Hamming_8_4
         int temp = !A + !B * 2 + !C * 4 + !D * 8;
 
         if (temp > 0)
-            std::cout << "В " << byteNum << " -ом байте была исправлена ошибка в ";
-
-        switch (temp) {
-        case 15:
-            d1 ^= 1;
-            std::cout << "7-ом бите." << std::endl;
-            break;
-        case 14:
-            d2 ^= 1;
-            std::cout << "5-ом бите." << std::endl;
-            break;
-        case 13:
-            d3 ^= 1;
-            std::cout << "3-ом бите." << std::endl;
-            break;
-        case 11:
-            d4 ^= 1;
-            std::cout << "1-ом бите." << std::endl;
-            break;
-        }
+            std::cout << "В " << byteNum << " -ом байте была исправлена ошибка в " << 8 - (31 - 2 * temp) << std::endl;
+			x ^= (1 << 7 - temp);
+		}
 
         return (d1 << 3) | (d2 << 2) | (d3 << 1) | d4;
     }
